@@ -1,5 +1,7 @@
 ## About
-Test repository for learning python
+スキルチェックと同じく問題をpythonで実施するリポジトリです。
 
-each branch should contain a different sample programme
+# 基本的なデータ型の使用
+ユーザーから入力された2つの整数を受け取り、それらの和(Add)、差(Sub)、積(Mul)、商(Div)を計算して表示するコンソールアプリケーションを作成してください。
+各運算が選択されるように拡張されました。
   
