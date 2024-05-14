@@ -1,2 +1,4 @@
 ## About
-Test repository for learning python  
+スキルチェックと同じく問題をpythonで実施するリポジトリです。
+各問題にブランチが存在します。
+問題定義は各ブランチのreadmeを確認してください。
