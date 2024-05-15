@@ -61,16 +61,20 @@ def ShowItems():
         items = DatabaseHandler.read()
         for i in items : 
             if isinstance(i, Classes.Book):
-                print("This Book is {0} by {1} and costs {2}. There are {3} copies available.".format(i.title, i.author, i.price, i.numberAvailable))
+                print("This Book is {0} by {1} and costs {2}. There are {3} copies available.  ID = {4}".format(i.title, i.author, i.price, i.numberAvailable, i.id))
         
             elif isinstance(i, Classes.Newspaper):
-                print("This Newspaper is {0} by {1} and was published on {2}. There are {3} copies available.".format(i.title, i.author, i.published_day, i.numberAvailable))
+                print("This Newspaper is {0} by {1} and was published on {2}. There are {3} copies available. ID = {4}".format(i.title, i.author, i.published_day, i.numberAvailable, i.id))
             
             elif isinstance(i, Classes.Magazine):
-                print("This Magazine is {0} by {1} and comes with a {2}. There are {3} copies available.".format(i.title, i.author, i.item, i.numberAvailable))
+                print("This Magazine is {0} by {1} and comes with a {2}. There are {3} copies available. ID = {4}.".format(i.title, i.author, i.item, i.numberAvailable, i.id))
             
             else:
                 print("Unknown item type")
+
+        temp = input("Press e to edit number available, any key to return")
+        if temp == "e" :
+            pass
 
 
 def MainMenu():

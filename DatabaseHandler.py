@@ -80,10 +80,12 @@ def GetMaxID() -> int :
         # create a cursor
         crsr = connection.cursor()
         crsr.execute("SELECT MAX(id) FROM Library;")
-        print(crsr.fetchone())
-        if crsr.fetchone() is None : returnValue = 1 
+        temp = crsr.fetchone()
+        print(temp)
+        if temp is None: 
+            returnValue = 1 
         else :
-              returnValue = int(crsr.fetchone())  
+              returnValue = int(temp[0]) +1  
         print(returnValue)
         crsr.close()
         print("list fetched successfully")
