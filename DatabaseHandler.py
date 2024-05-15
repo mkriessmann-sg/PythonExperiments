@@ -96,3 +96,59 @@ def GetMaxID() -> int :
             connection.close()
             print('Database connection terminated.')
             return returnValue
+        
+def UpdateValue(item):
+    connection = None
+    try:
+        params = config()
+        print('Connecting to the postgreSQL database ...')
+        connection = psycopg2.connect(**params)
+
+        # create a cursor
+        crsr = connection.cursor()
+        print(item.id)
+        print(item.numberAvailable)
+        crsr.execute("UPDATE Library SET number_available = {0} WHERE id = {1};" .format(item.numberAvailable, item.id))
+
+        crsr.close()
+        print("data updated successfully")
+    except(Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if connection is not None:
+            connection.commit()
+            connection.close()
+            print('Database connection terminated.')        
+
+
+def GetItemByID(id) :
+    connection = None
+    result = None
+    try:
+        params = config()
+        print('Connecting to the postgreSQL database ...')
+        connection = psycopg2.connect(**params)
+
+        # create a cursor
+        crsr = connection.cursor()
+        crsr.execute("SELECT * FROM Library where id = {0};".format(id))
+        temp = crsr.fetchone()
+        if temp[5] == "book" :
+                result = Classes.Book(temp[0],temp[1],temp[2],temp[3],temp[4])
+        elif temp[5] == "newspaper" :
+                result = Classes.Newspaper(temp[0],temp[1],temp[2],temp[3],temp[4])
+        elif temp[5] == "magazine" :
+                result = Classes.Magazine(temp[0],temp[1],temp[2],temp[3],temp[4])
+        else:
+                print("unnown object")
+
+        crsr.close()
+        print("list fetched successfully")
+    except(Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if connection is not None:
+            connection.close()
+            print('Database connection terminated.')
+            return result
+        

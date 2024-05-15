@@ -72,9 +72,9 @@ def ShowItems():
             else:
                 print("Unknown item type")
 
-        temp = input("Press e to edit number available, any key to return")
+        temp = input("Press e to edit number available, any key to return: ")
         if temp == "e" :
-            pass
+            EditMenu()
 
 
 def MainMenu():
@@ -99,6 +99,39 @@ def MainMenu():
         pass
     else :
         repeat = False
+
+def EditMenu():
+        id = IntegerInput("Select id of the requeste item:")
+        action = PlusMinusSelect()
+        item = DatabaseHandler.GetItemByID(id)
+        if action == "+":
+            item.numberAvailable+=1
+        elif  action == "-":
+            item.numberAvailable-=1
+        DatabaseHandler.UpdateValue(item)
+        
+
+def PlusMinusSelect() -> str :
+    
+        temp = input("select + to increment and - to decrement:")
+        if temp == "+" or temp == "-":
+            return temp
+        else :
+            print("unexpeced input!")
+            PlusMinusSelect()
+    
+        ShowItems()
+
+
+
+
+
+
+
+
+
+
+
 
 
 print("Welcome to the Library management.")
