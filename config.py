@@ -1,7 +1,7 @@
 from configparser import ConfigParser
 
 # taken from https://github.com/BekBrace/postgresql-connection-to-python-/blob/master/config.py
-def config(filename="database.ini", section="postgresql"):
+def config(filename="config.ini", section="postgresql"):
     # create a parser
     parser = ConfigParser()
     # read config file

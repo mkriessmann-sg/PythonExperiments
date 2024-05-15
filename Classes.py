@@ -1,5 +1,6 @@
 class Item:
-    def  __init__(self,title, author,numberAvailable):
+    def  __init__(self,id,title, author,numberAvailable):
+        self.id = id
         self.title = title
         self.author = author
         self.numberAvailable = numberAvailable
@@ -12,24 +13,24 @@ class Item:
         pass
 
 class Book(Item):
-            def __init__(self, title, author, numberAvailable, price):
-                 super().__init__(title, author, numberAvailable)
+            def __init__(self,id, title, author, numberAvailable, price):
+                 super().__init__(id, title, author, numberAvailable)
                  self.price = price
             
             def display_information(self):
                  print("This book is {0} by {1} and costs {2}. There are currently {3} copies available." .format(self.title, self.author, self.price, self.numberAvailable))
 
 class Newspaper(Item):
-            def __init__(self, title, author, numberAvailable, published_day):
-                  super().__init__(title, author, numberAvailable)
+            def __init__(self,id, title, author, numberAvailable, published_day):
+                  super().__init__(id,title, author, numberAvailable)
                   self.published_day = published_day
 
             def display_information(self):
                   print("This Newspaper is {0} by {1} and was published on {2}. There are currently {3} copies available." .format(self.title, self.author, self.published_day, self.numberAvailable))
 
 class Magazine(Item):
-            def __init__(self, title, author, numberAvailable, item):
-                  super().__init__(title, author, numberAvailable)
+            def __init__(self,id, title, author, numberAvailable, item):
+                  super().__init__(id, title, author, numberAvailable)
                   self.item = item
 
             def display_information(self):
